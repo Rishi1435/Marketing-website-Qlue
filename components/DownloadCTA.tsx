@@ -1,7 +1,7 @@
 import GlassCard from "./GlassCard";
 import GlassButton from "./GlassButton";
 import Reveal from "./Reveal";
-import { DOWNLOAD_URL } from "@/lib/constants";
+import { DOWNLOAD_URL, WEB_APP_URL } from "@/lib/constants";
 
 export default function DownloadCTA() {
   return (
@@ -15,16 +15,26 @@ export default function DownloadCTA() {
             Free, voice-first, and tuned to your resume. Get Qlue and walk into
             your next interview ready.
           </p>
-          <div className="mt-9 flex justify-center">
+          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <GlassButton
               href={DOWNLOAD_URL}
               variant="primary"
-              className="!px-8 !py-4 !text-base"
+              className="w-full !px-8 !py-4 !text-base sm:w-auto"
             >
               Get Qlue
             </GlassButton>
+            <GlassButton
+              href={WEB_APP_URL}
+              variant="secondary"
+              external
+              className="w-full !px-8 !py-4 !text-base sm:w-auto"
+            >
+              Open web app
+            </GlassButton>
           </div>
-          <p className="mt-4 text-xs text-ink-faint">Android · APK download</p>
+          <p className="mt-4 text-xs text-ink-faint">
+            Android APK · or use Qlue in your browser
+          </p>
         </GlassCard>
       </Reveal>
     </section>

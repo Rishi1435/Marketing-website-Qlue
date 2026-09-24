@@ -11,6 +11,9 @@ export const DOWNLOAD_URL =
 
 export const GITHUB_URL = "https://github.com/MouliSaiDeep/Qlue-v2";
 
+// Hosted web version of the Qlue app (no install required).
+export const WEB_APP_URL = "https://qlue-ai.vercel.app/";
+
 export const NAV_LINKS = [
   { label: "Modules", href: "#modules" },
   { label: "Tech", href: "#tech" },
