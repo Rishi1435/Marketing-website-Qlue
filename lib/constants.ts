@@ -26,7 +26,8 @@ export interface QlueModule {
   accent: string;
   tagline: string;
   description: string;
-  // image?: string; // TODO: add a real screenshot path, then render it inside <PhoneFrame>.
+  /** Screenshot of this module's card from the Qlue app, served from /public/modules. */
+  image: string;
 }
 
 export const MODULES: QlueModule[] = [
@@ -37,6 +38,7 @@ export const MODULES: QlueModule[] = [
     tagline: "Interviews that actually read your resume",
     description:
       "Upload your resume and Qlue extracts your projects, skills and experience, then asks the pointed follow-up questions a real interviewer would.",
+    image: "/modules/resume.png",
   },
   {
     id: "hr",
@@ -45,6 +47,7 @@ export const MODULES: QlueModule[] = [
     tagline: "Behavioral rounds, on demand",
     description:
       "Practice the classic HR questions — strengths, conflicts, “tell me about a time” — with feedback on how you framed every answer.",
+    image: "/modules/hr.png",
   },
   {
     id: "intro",
@@ -53,6 +56,7 @@ export const MODULES: QlueModule[] = [
     tagline: "Nail the first sixty seconds",
     description:
       "Rehearse your self-introduction and elevator pitch until it lands clean, confident and right on time.",
+    image: "/modules/intro.png",
   },
   {
     id: "website",
@@ -61,6 +65,7 @@ export const MODULES: QlueModule[] = [
     tagline: "Interview for a specific company",
     description:
       "Paste a company or role URL and Qlue reads it, then runs a mock interview tailored to what that team is actually hiring for.",
+    image: "/modules/website.png",
   },
   {
     id: "jobmatch",
@@ -69,6 +74,7 @@ export const MODULES: QlueModule[] = [
     tagline: "Match yourself to the job description",
     description:
       "Drop in a job description and Qlue interviews you against its requirements, surfacing the gaps to close before the real thing.",
+    image: "/modules/jobmatch.png",
   },
 ];
 

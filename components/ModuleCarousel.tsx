@@ -1,38 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import PhoneFrame from "./PhoneFrame";
-import { MODULES, type QlueModule } from "@/lib/constants";
+import { MODULES } from "@/lib/constants";
 
 const AUTO_MS = 5000;
-
-function ScreenPlaceholder({ module }: { module: QlueModule }) {
-  return (
-    <div
-      className="flex h-full w-full flex-col items-center justify-center gap-3 px-6 text-center"
-      style={{
-        background: `linear-gradient(165deg, ${module.accent}26 0%, #050505 68%)`,
-      }}
-    >
-      <div
-        className="flex h-14 w-14 items-center justify-center rounded-2xl"
-        style={{
-          background: `${module.accent}33`,
-          border: `1px solid ${module.accent}55`,
-        }}
-      >
-        <span className="text-xl font-bold text-white">
-          {module.name.charAt(0)}
-        </span>
-      </div>
-      <span className="text-base font-bold text-white">{module.name}</span>
-      <span className="max-w-[85%] text-[10px] font-semibold uppercase leading-relaxed tracking-wider text-ink-faint">
-        [Placeholder — swap for real screenshot]
-      </span>
-    </div>
-  );
-}
 
 export default function ModuleCarousel() {
   const [index, setIndex] = useState(0);
@@ -144,7 +117,10 @@ export default function ModuleCarousel() {
           </AnimatePresence>
         </div>
 
-        {/* Phone */}
+        {/* Screenshot — a real high-res crop of the module's card from the
+            app. The crop keeps the app's near-black screen margin around the
+            card, and the site background is the same OLED black, so the card
+            reads as floating on the page with no visible frame or seam. */}
         <div className="order-1 flex justify-center md:order-2">
           <AnimatePresence mode="wait">
             <motion.div
@@ -153,10 +129,27 @@ export default function ModuleCarousel() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: reduce ? 1 : 0.98 }}
               transition={{ duration: 0.45, ease: "easeOut" }}
+              className="relative w-full max-w-lg"
             >
-              <PhoneFrame glowColor={active.accent}>
-                <ScreenPlaceholder module={active} />
-              </PhoneFrame>
+              {/* Soft accent bloom — an elliptical, heavily blurred glow that
+                  reads as an ambient halo, not a box. */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -inset-8 opacity-40 blur-3xl"
+                style={{
+                  background: `radial-gradient(55% 55% at 50% 45%, ${active.accent}, transparent 70%)`,
+                }}
+              />
+              <Image
+                src={active.image}
+                alt={`The ${active.name} module in the Qlue app`}
+                width={1200}
+                height={905}
+                unoptimized
+                priority={index === 0}
+                sizes="(max-width: 768px) 92vw, 512px"
+                className="relative h-auto w-full"
+              />
             </motion.div>
           </AnimatePresence>
         </div>
