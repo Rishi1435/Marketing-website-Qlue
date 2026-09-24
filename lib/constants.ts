@@ -3,11 +3,11 @@
 // Swap placeholders here — every component reads its content from this file.
 // ---------------------------------------------------------------------------
 
-// Always resolves to the qlue.apk asset on the latest release of the app repo.
-// Published by the Release APK GitHub Actions workflow in MouliSaiDeep/Qlue-v2
-// on every version tag (e.g. v1.0.0). 404s until the first release exists.
+// Resolves to the Qlue.apk asset on the latest release of the app repo,
+// published by the Release APK GitHub Actions workflow in MouliSaiDeep/Qlue-v2
+// on every version tag (e.g. v1.0.0). Filename matches the published asset exactly.
 export const DOWNLOAD_URL =
-  "https://github.com/MouliSaiDeep/Qlue-v2/releases/latest/download/qlue.apk";
+  "https://github.com/MouliSaiDeep/Qlue-v2/releases/latest/download/Qlue.apk";
 
 export const GITHUB_URL = "https://github.com/MouliSaiDeep/Qlue-v2";
 
